@@ -23,18 +23,30 @@ public class EmployeeService {
 
 	}
 
+	public List<Employee> getEmpByName(String name) {
+		
+		List<Employee>emp = employeeRepository.findByName(name);
+
+		return emp;
+	}
+
+	public List<Employee> getAllEmp() {
+		return employeeRepository.findAll();
+	}
+
 	public Employee addEmp(Employee emp) {
 		return employeeRepository.save(emp);
 	}
-	//day1
+
+	// day1
 	public void getEmpByDepartment() {
 		List<Employee> allEmp = employeeRepository.findAll();
 		System.out.println("========================= group of emp by dept =================================");
 		allEmp.stream().collect(Collectors.groupingBy(Employee::getDepartment))
 				.forEach((dept, emp) -> System.out.println(dept + ": " + emp));
 	}
-	
-	//day1
+
+	// day1
 	public void getMaxSalByDepartment() {
 		List<Employee> allEmp = employeeRepository.findAll();
 		System.out.println("========================= max salary by dept =================================");// collecting().andThen()
@@ -46,7 +58,8 @@ public class EmployeeService {
 	}
 
 	// day2 task(6.1)
-	// Use predicate function to find the age of an employee greater than 28 and print the employee (Note: use method reference ) 
+	// Use predicate function to find the age of an employee greater than 28 and
+	// print the employee (Note: use method reference )
 	public void getEmpByAge() {
 		List<Employee> allEmp = employeeRepository.findAll();
 		System.out.println("========================= Employee greater than 28 =================================");
@@ -54,11 +67,11 @@ public class EmployeeService {
 	}
 
 	// day2 task(6.2)
-	//Sort the employees based on age 
+	// Sort the employees based on age
 	public void sortEmpByAge() {
 		List<Employee> allEmp = employeeRepository.findAll();
 		System.out.println("========================= Employee Ascending order by age =============================");
-		allEmp.stream().sorted(Comparator.comparing(Employee :: getAge)).forEach(System.out::println);
+		allEmp.stream().sorted(Comparator.comparing(Employee::getAge)).forEach(System.out::println);
 
 	}
 
