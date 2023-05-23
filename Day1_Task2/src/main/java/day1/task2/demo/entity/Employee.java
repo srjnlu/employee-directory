@@ -1,5 +1,6 @@
 package day1.task2.demo.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -16,15 +17,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 public class Employee {
-	
-	@Id	
+
+	@Id
 	private Integer id;
+
+	@Column(name = "name")
 	private String name;
+
 	private Integer age;
 	private String gender;
 	private String department;
 	private Integer YOJ;
 	private Double salary;
-	
 
 }
